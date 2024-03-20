@@ -4,16 +4,19 @@ import { getAllPost } from '../../store/api/fetchEmployeApi';
 import PostList from './PostList';
 import PostHeader from './PostHeader';
 const PostListWrapper = () => {
-    const getAllPosts = useSelector((state) => state.fetchPost);
-    const dispatch = useDispatch();
+  const getAllPosts = useSelector((state) => state.fetchPost);
+  const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(getAllPost());
-    }, [dispatch]);
+  useEffect(() => {
+    if (getAllPosts.AllPostList.length === 0) {
+      dispatch(getAllPost());
+    }
+
+  }, [dispatch]);
 
   return (
     <div>
-        <PostHeader></PostHeader>
+      <PostHeader></PostHeader>
       <PostList Post={getAllPosts.AllPostList} ></PostList>
     </div>
   )

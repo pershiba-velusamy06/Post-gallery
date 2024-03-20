@@ -1,6 +1,17 @@
 import React from 'react';
 import './Post.css'
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { createPostSliceActions } from '../../store/slice/createPostSlice';
 const PostList = ({ Post }) => {
+    const navigate = useNavigate()
+    const dispatch = useDispatch();
+    const EditPost = (PostData) => {
+        console.log(PostData)
+        dispatch(createPostSliceActions.setEditData(PostData))
+        navigate('/editPost')
+    }
+
     return (
         <div className="container">
             <div className="row row-cols-1 row-cols-md-3">
@@ -13,9 +24,9 @@ const PostList = ({ Post }) => {
                                 <p className="card-text flex-grow-1">{postDetails.body}</p>
                                 <p className="card-text">Post ID: {postDetails?.id}</p>
                                 <div className="mt-auto button-display">
-                                <button className= " bg-white  btn-delete-css">delete</button>
-                                    <button className="bg-white  btn-edit-css" >Edit</button>
-                               
+                                    <button className=" bg-white  btn-delete-css">delete</button>
+                                    <button className="bg-white  btn-edit-css" onClick={() => EditPost(postDetails)} >Edit</button>
+
                                 </div>
                             </div>
                         </div>
