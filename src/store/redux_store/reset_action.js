@@ -1,10 +1,10 @@
 
 import * as reducerConstants from '../reducerConstants'
-import fetchEmployeeSlice from '../slice/fetchEmployeeSlice';
+import fetchPostSlice from '../slice/fetchPostSlice';
 
-export const fetchUserWrapper = (state, action) => {
-    if (action.type === `${reducerConstants.FETCH_ALL_EMPLOYEE}/reset`) {
+export const fetchPostWrapper = (state, action) => {
+    if (action.type === `${reducerConstants.FETCH_ALL_POST}/reset`) {
         state = undefined;
     }
-    return fetchEmployeeSlice(state, action);
+    return fetchPostSlice(state, action);
 };

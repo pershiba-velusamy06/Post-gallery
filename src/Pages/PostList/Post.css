@@ -1,0 +1,12 @@
+.PostHeader{
+    display: flex;
+    justify-content: space-between;
+}
+
+.createButton{
+    color:#008080;
+    padding: 10px;
+    border: 1px solid #008080;
+    border-radius: 10px;
+
+}

@@ -1,10 +1,12 @@
 import './App.css';
-import EmployeeList from './Pages/employeeList/employeeList';
+import PostIndex from './Pages/PostIndex';
+
+
 
 function App() {
   return (
     <div >
-      <EmployeeList key={'employeelist'}/>
+      <PostIndex />
     </div>
   );
 }

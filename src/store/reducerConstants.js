@@ -1,1 +1,1 @@
-export const FETCH_ALL_EMPLOYEE = 'fetch_All_employee'
+export const FETCH_ALL_POST = 'fetch_All_Post'
