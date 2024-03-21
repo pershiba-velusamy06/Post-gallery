@@ -5,7 +5,10 @@ import { getAllPost } from "../api/fetchEmployeApi";
 
 export const initialState = {
     isLoading: false,
-    AllPostList: []
+    AllPostList: [],
+    isDeleteLoading: false,
+    deleteId: "",
+    isCreateLoading:""
 };
 
 const fetchPostSlice = createSlice({
@@ -14,11 +17,29 @@ const fetchPostSlice = createSlice({
     reducers: {
         addPostToExsisting: (state, { payload }) => {
             state.AllPostList.push(payload);
+            state.isCreateLoading=payload.id
         },
         updatePost: (state, { payload }) => {
             let index = state.AllPostList.findIndex((post) => { return post.id === payload.id })
-            if(index>-1){
-                state.AllPostList[index]=payload;
+            if (index > -1) {
+                state.AllPostList[index] = payload;
+                state.isCreateLoading=payload.id
+            }
+        },
+        deleteLoading: (state, { payload }) => {
+            state.isDeleteLoading = !state.isDeleteLoading;
+            state.deleteId = payload
+        },
+        createLoading: (state, { payload }) => {
+            state.isCreateLoading = "";
+            
+        },
+        deletePost: (state, { payload }) => {
+            let index = state.AllPostList.findIndex((post) => { return post.id === payload.id })
+            if (index > -1) {
+                state.AllPostList.splice(index, 1);
+                state.isDeleteLoading = false
+                state.deleteId = ""
             }
         },
 

@@ -5,7 +5,7 @@ import { CreatePost, updatePost } from "../api/fetchEmployeApi";
 
 
 export const initialState = {
-    isLoading: false,
+    isdataLoading: false,
     PostDetail: {
         title: '',
         body: '',
@@ -21,7 +21,9 @@ const createPostSlice = createSlice({
     name: CREATE_NEW_POST,
     initialState,
     reducers: {
-
+        setLoading: (state, { payload }) => {
+            state.isdataLoading= !state.isdataLoading
+        },
         setTitle: (state, { payload }) => {
             state.Title = payload;
             state.PostDetail.title = payload;
@@ -41,7 +43,7 @@ const createPostSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder.addCase(CreatePost.pending, (state) => {
-            state.isLoading = true;
+            state.isdataLoading = true;
         });
         builder.addCase(CreatePost.fulfilled, (state, { payload }) => {
             if (payload?.status === 201) {
@@ -57,27 +59,32 @@ const createPostSlice = createSlice({
                 state.PostDetail = {}
             }
 
-            state.isLoading = false
+            state.isdataLoading = false
         });
         builder.addCase(CreatePost.rejected, (state, { payload }) => {
-            state.isLoading = false;
+            state.isdataLoading = false;
         });
         builder.addCase(updatePost.pending, (state) => {
-            state.isLoading = true;
+            state.isdataLoading = true;
         });
         builder.addCase(updatePost.fulfilled, (state, { payload }) => {
             if (payload?.status === 200) {
 
-                state.PostDetail = ""
+
+                state.PostDetail = {
+                    title: '',
+                    body: '',
+                    userId: 1
+                };
                 state.Title = "";
                 state.Description = "";
                 state.postId = ""
-                state.isLoading = false
+                state.isdataLoading = false
                 state.isEdit = false
             }
         });
         builder.addCase(updatePost.rejected, (state, { payload }) => {
-            state.isLoading = false;
+            state.isdataLoading = false;
         });
     },
 });

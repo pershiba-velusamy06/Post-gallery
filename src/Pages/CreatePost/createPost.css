@@ -1,0 +1,11 @@
+.overlay-spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999; 
+}
+.text-info-spinner1{
+    margin-top: 0px !important;
+    color: #008080 !important;
+}

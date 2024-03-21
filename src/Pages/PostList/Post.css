@@ -18,6 +18,7 @@
     padding: 10px;
     width: 65px;
     margin-right: 20px;
+    margin-left: 20px;
 }
 
 .btn-delete-css {
@@ -27,8 +28,28 @@
     padding: 10px;
 }
 
+
+.text-info-spinner{
+    color: #008080 !important;
+margin-top: 200px;
+   
+}
 .button-display {
     display: flex;
     flex-direction: row-reverse;
     /* justify-content: space-around; */
+}
+
+.overlay-spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999; /* Ensure it's above other elements */
+  
+}
+
+.add-overlayBg{
+    background:#00808045;
+    z-index: 10;
 }
