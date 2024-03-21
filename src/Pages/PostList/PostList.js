@@ -9,8 +9,7 @@ const PostList = ({ Post, isLoading, isDeleteLoading, deleteId, isCreateLoading 
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const scrollToRef = useRef(null);
-    const getAllPosts = useSelector((state) => state.postData);
-//isdataLoading
+ 
     useEffect(() => {
         if (isCreateLoading!=="") {
 

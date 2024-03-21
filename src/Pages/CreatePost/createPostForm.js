@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createPostSliceActions } from '../../store/slice/createPostSlice';
 import { CreatePost, updatePost } from '../../store/api/fetchEmployeApi';
@@ -11,6 +11,8 @@ const CreatePostForm = () => {
   const navigate = useNavigate()
  
 
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(createPostSliceActions.setLoading())
@@ -19,12 +21,14 @@ const CreatePostForm = () => {
         dispatch(updatePost(getAllPosts.PostDetail, getAllPosts.postId)).unwrap().then((response) => {
           console.log(response, "response")
           dispatch(fetchPostSliceActions.updatePost(response.data))
+          dispatch( createPostSliceActions.reset())
           navigate('/')
         })
       } else {
         dispatch(CreatePost(getAllPosts.PostDetail)).unwrap().then((response) => {
           console.log(response, "response")
           dispatch(fetchPostSliceActions.addPostToExsisting(response.data))
+          dispatch( createPostSliceActions.reset())
           navigate('/')
         })
       }

@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { FETCH_ALL_POST } from "../reducerConstants";
 import { getAllPost } from "../api/fetchEmployeApi";
+import { findIdForPost } from "../helpers/fetchPostHelper";
 
 
 export const initialState = {
@@ -20,7 +21,7 @@ const fetchPostSlice = createSlice({
             state.isCreateLoading=payload.id
         },
         updatePost: (state, { payload }) => {
-            let index = state.AllPostList.findIndex((post) => { return post.id === payload.id })
+            let index = findIdForPost(state,payload)
             if (index > -1) {
                 state.AllPostList[index] = payload;
                 state.isCreateLoading=payload.id
@@ -35,7 +36,7 @@ const fetchPostSlice = createSlice({
             
         },
         deletePost: (state, { payload }) => {
-            let index = state.AllPostList.findIndex((post) => { return post.id === payload.id })
+            let index = findIdForPost(state,payload)
             if (index > -1) {
                 state.AllPostList.splice(index, 1);
                 state.isDeleteLoading = false

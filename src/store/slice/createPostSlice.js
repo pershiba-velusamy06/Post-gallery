@@ -21,7 +21,7 @@ const createPostSlice = createSlice({
     name: CREATE_NEW_POST,
     initialState,
     reducers: {
-        setLoading: (state, { payload }) => {
+        setLoading: (state) => {
             state.isdataLoading= !state.isdataLoading
         },
         setTitle: (state, { payload }) => {
@@ -41,52 +41,7 @@ const createPostSlice = createSlice({
         },
         reset: () => { },
     },
-    extraReducers: (builder) => {
-        builder.addCase(CreatePost.pending, (state) => {
-            state.isdataLoading = true;
-        });
-        builder.addCase(CreatePost.fulfilled, (state, { payload }) => {
-            if (payload?.status === 201) {
-
-                state.PostDetail = {
-                    title: '',
-                    body: '',
-                    userId: 1
-                };
-                state.Title = "";
-                state.Description = "";
-            } else {
-                state.PostDetail = {}
-            }
-
-            state.isdataLoading = false
-        });
-        builder.addCase(CreatePost.rejected, (state, { payload }) => {
-            state.isdataLoading = false;
-        });
-        builder.addCase(updatePost.pending, (state) => {
-            state.isdataLoading = true;
-        });
-        builder.addCase(updatePost.fulfilled, (state, { payload }) => {
-            if (payload?.status === 200) {
-
-
-                state.PostDetail = {
-                    title: '',
-                    body: '',
-                    userId: 1
-                };
-                state.Title = "";
-                state.Description = "";
-                state.postId = ""
-                state.isdataLoading = false
-                state.isEdit = false
-            }
-        });
-        builder.addCase(updatePost.rejected, (state, { payload }) => {
-            state.isdataLoading = false;
-        });
-    },
+ 
 });
 
 export const createPostSliceActions = createPostSlice.actions;
