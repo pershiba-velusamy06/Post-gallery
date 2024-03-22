@@ -9,3 +9,24 @@
     margin-top: 0px !important;
     color: #008080 !important;
 }
+
+.addborder{
+    border-radius: 10px;
+    border: 2px solid #008080;
+    margin: auto;
+    margin-top: 150px;
+    padding: 50px;
+    max-width: 370px;
+    width: 100%;
+}
+
+.btn-submit-css {
+    color: black;
+    border: 1px solid #008080;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #008080;
+    margin-left: 60px;
+    margin-top: 10px;
+
+}

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import './Post.css';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { createPostSliceActions } from '../../store/slice/createPostSlice';
 import { fetchPostSliceActions } from '../../store/slice/fetchPostSlice';
 
@@ -21,7 +21,7 @@ const PostList = ({ Post, isLoading, isDeleteLoading, deleteId, isCreateLoading 
                 dispatch(fetchPostSliceActions.createLoading());
             }, 1000);
         }
-    }, [dispatch, isCreateLoading]);
+    }, [dispatch, isCreateLoading]); 
 
     const EditPost = (PostData) => {
         dispatch(createPostSliceActions.setEditData(PostData));

@@ -12,8 +12,8 @@ const PostListWrapper = () => {
     if (getAllPosts.AllPostList.length === 0) {
       dispatch(getAllPost());
     }
-
-  }, [dispatch]);
+// eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dispatch]); 
 
   return (
     <div>

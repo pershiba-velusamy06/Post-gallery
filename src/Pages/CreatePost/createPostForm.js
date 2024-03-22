@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createPostSliceActions } from '../../store/slice/createPostSlice';
 import { CreatePost, updatePost } from '../../store/api/fetchEmployeApi';
@@ -10,9 +10,6 @@ const CreatePostForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate()
  
-
-
-
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(createPostSliceActions.setLoading())
@@ -51,7 +48,8 @@ const CreatePostForm = () => {
         </div>
       </div>
     }
-    < div className ={ getAllPosts.isdataLoading?"d-flex justify-content-center align-items-center vh-100 add-overlayBg": "d-flex justify-content-center align-items-center vh-100"} >
+
+    < div className ={"d-flex justify-content-center align-items-center  addborder "} >
 
       <div>
         <h2 className="text-center">{getAllPosts.isEdit?"Edit Post":"Create Post"}</h2>
@@ -64,7 +62,7 @@ const CreatePostForm = () => {
             <label htmlFor="description" className="form-label">Description</label>
             <textarea className="form-control" id="description" rows="4" value={getAllPosts.Description} onChange={(e) =>    dispatch(createPostSliceActions.setDescription(e.target.value))} required></textarea>
           </div>
-          <button type="submit" className="btn btn-primary">Submit</button>
+          <button type="submit" className="btn-submit-css">Submit</button>
         </form>
       </div>
     </div >
