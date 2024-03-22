@@ -20,9 +20,15 @@ const CreatePostForm = () => {
       if (getAllPosts.isEdit) {
         dispatch(updatePost(getAllPosts.PostDetail, getAllPosts.postId)).unwrap().then((response) => {
           console.log(response, "response")
-          dispatch(fetchPostSliceActions.updatePost(response.data))
-          dispatch( createPostSliceActions.reset())
-          navigate('/')
+          if(response.status===200){
+            dispatch(fetchPostSliceActions.updatePost(response.data))
+            dispatch( createPostSliceActions.reset())
+            navigate('/')
+          }else{
+            dispatch( createPostSliceActions.reset()) 
+            navigate('/')
+          }
+         
         })
       } else {
         dispatch(CreatePost(getAllPosts.PostDetail)).unwrap().then((response) => {

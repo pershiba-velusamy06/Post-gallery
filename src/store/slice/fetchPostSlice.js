@@ -31,7 +31,7 @@ const fetchPostSlice = createSlice({
             state.isDeleteLoading = !state.isDeleteLoading;
             state.deleteId = payload
         },
-        createLoading: (state, { payload }) => {
+        createLoading: (state) => {
             state.isCreateLoading = "";
             
         },
