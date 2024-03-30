@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { CREATE_NEW_POST } from "../reducerConstants";
-import { CreatePost, updatePost } from "../api/fetchEmployeApi";
 
 
 
